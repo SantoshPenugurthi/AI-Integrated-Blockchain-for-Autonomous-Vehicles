@@ -1,0 +1,37 @@
+
+<!-- define a polygon for the closed road -->
+<edges>
+    <edge from="n1" to="n2" id="n1n2" type="2L30" />
+    <edge from="n2" to="n3" id="n2n3" type="2L30" />
+    <!-- define a road for the closed road -->
+    <edge from="n3" to="n4" id="n3n4" type="2L30">
+        <lane index="0">
+            <obstacle>
+                <poly color="red" fill="true">
+                    <point x="10" y="5"/>
+                    <point x="20" y="5"/>
+                    <point x="20" y="10"/>
+                    <point x="10" y="10"/>
+                </poly>
+            </obstacle>
+        </lane>
+    </edge>
+    <edge from="n4" to="n5" id="n4n5" type="2L30" />
+    <edge from="n5" to="n6" id="n5n6" type="2L30" />
+
+    <edge from="n2" to="n7" id="n2n7" type="2L75" />
+    <edge from="n7" to="n8" id="n7n8" type="2L75" />
+    <edge from="n8" to="n9" id="n8n9" type="2L75" />
+    <edge from="n9" to="n10" id="n9n10" type="2L75" />
+    <edge from="n10" to="n4" id="n10n4" type="2L75" />
+
+    <edge from="n2" to="n11" id="n2n11" type="2L75" />
+    <edge from="n11" to="n12" id="n11n12" type="2L75" />
+    <edge from="n12" to="n13" id="n12n13" type="2L75" />
+    <edge from="n13" to="n14" id="n13n14" type="2L75" />
+    <edge from="n14" to="n5" id="n14n5" type="2L75" />
+
+    <edge from="n9" to="n3" id="n3n9" type="2L30" />
+    <edge from="n3" to="n12" id="n3n12" type="2L30" />
+    <edge from="n14" to="n15" id="n14n15" type="2L30" />
+</edges>

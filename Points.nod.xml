@@ -1,0 +1,17 @@
+<nodes>
+    <node id="n1" x="-50" y="0" type="priority" />
+    <node id="n2" x="0" y="0" type="traffic_light" />
+    <node id="n3" x="75" y="0" type="traffic_light" />
+    <node id="n4" x="125" y="0" type="traffic_light" />
+    <node id="n5" x="150" y="0" type="traffic_light" />
+    <node id="n6" x="200" y="0" />
+    <node id="n7" x="0" y="75"  type="traffic_light"/>
+    <node id="n8" x="75" y="75" type="traffic_light" />
+    <node id="n9" x="75" y="50" type="traffic_light" />
+    <node id="n10" x="125" y="50" type="traffic_light" />
+    <node id="n11" x="0" y="-50" type="traffic_light" />
+    <node id="n12" x="75" y="-50" type="traffic_light" />
+    <node id="n13" x="75" y="-75" type="traffic_light" />
+    <node id="n14" x="150" y="-75" type="traffic_light" />
+    <node id="n15" x="200" y="-75" />
+</nodes>

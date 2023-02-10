@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-02-03 17:31:45 by Eclipse SUMO netconvert Version 1.15.0
+<!-- generated on 2023-02-10 21:24:59 by Eclipse SUMO netconvert Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -158,10 +158,6 @@
         <lane id="n3n4_0" index="0" speed="1.00" length="35.60" shape="129.00,70.20 164.60,70.20"/>
         <lane id="n3n4_1" index="1" speed="1.00" length="35.60" shape="129.00,73.40 164.60,73.40"/>
     </edge>
-    <edge id="n3n9" from="n9" to="n3" priority="1" type="2L30">
-        <lane id="n3n9_0" index="0" speed="1.00" length="35.60" shape="120.20,114.60 120.20,79.00"/>
-        <lane id="n3n9_1" index="1" speed="1.00" length="35.60" shape="123.40,114.60 123.40,79.00"/>
-    </edge>
     <edge id="n4n5" from="n4" to="n5" priority="1" type="2L30">
         <lane id="n4n5_0" index="0" speed="1.00" length="17.00" shape="179.00,70.20 196.00,70.20"/>
         <lane id="n4n5_1" index="1" speed="1.00" length="17.00" shape="179.00,73.40 196.00,73.40"/>
@@ -181,6 +177,10 @@
     <edge id="n9n10" from="n9" to="n10" priority="3" type="2L75">
         <lane id="n9n10_0" index="0" speed="3.00" length="39.60" shape="129.00,120.20 168.60,120.20"/>
         <lane id="n9n10_1" index="1" speed="3.00" length="39.60" shape="129.00,123.40 168.60,123.40"/>
+    </edge>
+    <edge id="n9n3" from="n9" to="n3" priority="1" type="2L30">
+        <lane id="n9n3_0" index="0" speed="1.00" length="35.60" shape="120.20,114.60 120.20,79.00"/>
+        <lane id="n9n3_1" index="1" speed="1.00" length="35.60" shape="123.40,114.60 123.40,79.00"/>
     </edge>
 
     <tlLogic id="n10" type="static" programID="0" offset="0">
@@ -282,7 +282,7 @@
         <request index="4" response="000000" foes="000000" cont="0"/>
         <request index="5" response="000000" foes="000000" cont="0"/>
     </junction>
-    <junction id="n3" type="traffic_light" x="125.00" y="75.00" incLanes="n3n9_0 n3n9_1 n2n3_0 n2n3_1" intLanes=":n3_0_0 :n3_0_1 :n3_2_0 :n3_3_0 :n3_4_0 :n3_4_1" shape="118.60,79.00 125.00,79.00 125.44,76.78 126.00,76.00 126.78,75.44 127.78,75.11 129.00,75.00 129.00,68.60 126.78,68.16 126.00,67.60 125.44,66.82 125.11,65.82 125.00,64.60 118.60,64.60 118.16,66.82 117.60,67.60 116.82,68.16 115.82,68.49 114.60,68.60 114.60,75.00 116.82,75.44 117.60,76.00 118.16,76.78 118.49,77.78">
+    <junction id="n3" type="traffic_light" x="125.00" y="75.00" incLanes="n9n3_0 n9n3_1 n2n3_0 n2n3_1" intLanes=":n3_0_0 :n3_0_1 :n3_2_0 :n3_3_0 :n3_4_0 :n3_4_1" shape="118.60,79.00 125.00,79.00 125.44,76.78 126.00,76.00 126.78,75.44 127.78,75.11 129.00,75.00 129.00,68.60 126.78,68.16 126.00,67.60 125.44,66.82 125.11,65.82 125.00,64.60 118.60,64.60 118.16,66.82 117.60,67.60 116.82,68.16 115.82,68.49 114.60,68.60 114.60,75.00 116.82,75.44 117.60,76.00 118.16,76.78 118.49,77.78">
         <request index="0" response="111000" foes="111000" cont="0"/>
         <request index="1" response="111000" foes="111000" cont="0"/>
         <request index="2" response="110000" foes="110000" cont="0"/>
@@ -347,19 +347,19 @@
     <connection from="n3n12" to="n12n13" fromLane="1" toLane="1" via=":n12_0_1" tl="n12" linkIndex="1" dir="s" state="o"/>
     <connection from="n3n4" to="n4n5" fromLane="0" toLane="0" via=":n4_2_0" tl="n4" linkIndex="2" dir="s" state="O"/>
     <connection from="n3n4" to="n4n5" fromLane="1" toLane="1" via=":n4_2_1" tl="n4" linkIndex="3" dir="s" state="O"/>
-    <connection from="n3n9" to="n3n12" fromLane="0" toLane="0" via=":n3_0_0" tl="n3" linkIndex="0" dir="s" state="o"/>
-    <connection from="n3n9" to="n3n12" fromLane="1" toLane="1" via=":n3_0_1" tl="n3" linkIndex="1" dir="s" state="o"/>
-    <connection from="n3n9" to="n3n4" fromLane="1" toLane="1" via=":n3_2_0" tl="n3" linkIndex="2" dir="l" state="o"/>
     <connection from="n4n5" to="n5n6" fromLane="0" toLane="0" via=":n5_2_0" tl="n5" linkIndex="2" dir="s" state="o"/>
     <connection from="n4n5" to="n5n6" fromLane="1" toLane="1" via=":n5_2_1" tl="n5" linkIndex="3" dir="s" state="o"/>
     <connection from="n7n8" to="n8n9" fromLane="0" toLane="0" via=":n8_0_0" tl="n8" linkIndex="0" dir="r" state="O"/>
     <connection from="n7n8" to="n8n9" fromLane="1" toLane="1" via=":n8_0_1" tl="n8" linkIndex="1" dir="r" state="O"/>
-    <connection from="n8n9" to="n3n9" fromLane="0" toLane="0" via=":n9_0_0" tl="n9" linkIndex="0" dir="s" state="O"/>
-    <connection from="n8n9" to="n3n9" fromLane="1" toLane="1" via=":n9_0_1" tl="n9" linkIndex="1" dir="s" state="O"/>
+    <connection from="n8n9" to="n9n3" fromLane="0" toLane="0" via=":n9_0_0" tl="n9" linkIndex="0" dir="s" state="O"/>
+    <connection from="n8n9" to="n9n3" fromLane="1" toLane="1" via=":n9_0_1" tl="n9" linkIndex="1" dir="s" state="O"/>
     <connection from="n8n9" to="n9n10" fromLane="1" toLane="0" via=":n9_2_0" tl="n9" linkIndex="2" dir="l" state="O"/>
     <connection from="n8n9" to="n9n10" fromLane="1" toLane="1" via=":n9_2_1" tl="n9" linkIndex="3" dir="l" state="O"/>
     <connection from="n9n10" to="n10n4" fromLane="0" toLane="0" via=":n10_0_0" tl="n10" linkIndex="0" dir="r" state="O"/>
     <connection from="n9n10" to="n10n4" fromLane="1" toLane="1" via=":n10_0_1" tl="n10" linkIndex="1" dir="r" state="O"/>
+    <connection from="n9n3" to="n3n12" fromLane="0" toLane="0" via=":n3_0_0" tl="n3" linkIndex="0" dir="s" state="o"/>
+    <connection from="n9n3" to="n3n12" fromLane="1" toLane="1" via=":n3_0_1" tl="n3" linkIndex="1" dir="s" state="o"/>
+    <connection from="n9n3" to="n3n4" fromLane="1" toLane="1" via=":n3_2_0" tl="n3" linkIndex="2" dir="l" state="o"/>
 
     <connection from=":n10_0" to="n10n4" fromLane="0" toLane="0" dir="r" state="M"/>
     <connection from=":n10_0" to="n10n4" fromLane="1" toLane="1" dir="r" state="M"/>
@@ -399,8 +399,8 @@
     <connection from=":n7_0" to="n7n8" fromLane="1" toLane="1" dir="r" state="M"/>
     <connection from=":n8_0" to="n8n9" fromLane="0" toLane="0" dir="r" state="M"/>
     <connection from=":n8_0" to="n8n9" fromLane="1" toLane="1" dir="r" state="M"/>
-    <connection from=":n9_0" to="n3n9" fromLane="0" toLane="0" dir="s" state="M"/>
-    <connection from=":n9_0" to="n3n9" fromLane="1" toLane="1" dir="s" state="M"/>
+    <connection from=":n9_0" to="n9n3" fromLane="0" toLane="0" dir="s" state="M"/>
+    <connection from=":n9_0" to="n9n3" fromLane="1" toLane="1" dir="s" state="M"/>
     <connection from=":n9_2" to="n9n10" fromLane="0" toLane="0" dir="l" state="M"/>
     <connection from=":n9_2" to="n9n10" fromLane="1" toLane="1" dir="l" state="M"/>
 

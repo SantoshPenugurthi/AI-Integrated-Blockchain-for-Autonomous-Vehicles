@@ -7,4 +7,7 @@
     <vehicle depart="0" id="veh1" route="route1" type="Car" />
     <route id="route2" edges="n1n2 n2n11 n11n12 n12n13 n13n14 n14n5 n5n6" />
     <vehicle depart="0" id="veh2" route="route2" type="Car" />
+
+    <route id="route3" edges="n1n2 n2n3 n3n4 n4n5 n5n6" />
+    <vehicle depart="100" id="veh3" route="route3" type="Car" />
 </routes>

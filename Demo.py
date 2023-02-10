@@ -5,12 +5,12 @@ import traci
 def run():
     while traci.simulation.getMinExpectedNumber() > 0:
         traci.simulationStep()
-        current_lane_index = traci.vehicle.getRoadID("veh0")
-        print(current_lane_index)
-        if(current_lane_index=="n1n2"):
-            traci.vehicle.changeLaneRelative("veh0",1,20)
+        current_edge_id = traci.vehicle.getRoadID("veh0")
+        print(current_edge_id)
+        if(current_edge_id=="n1n2"):
+            traci.vehicle.changeLane("veh0",1,5)
             traci.vehicle.setSpeed("veh0",2.0)
-            traci.vehicle.setRoute("veh0",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])
+            # traci.vehicle.setRoute("veh0",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])
 
     traci.close()
 

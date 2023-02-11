@@ -11,7 +11,7 @@
     <edge from="n2" to="n7" id="n2n7" type="2L75" />
     <edge from="n7" to="n8" id="n7n8" type="2L75" />
     <edge from="n8" to="n9" id="n8n9" type="2L75" />
-    <edge from="n9" to="n10" id="n9n10" type="2L75" />
+    <edge from="n9" to="n10" id="n9n10" type="2L30" />
     <edge from="n10" to="n4" id="n10n4" type="2L75" />
 
     <edge from="n2" to="n11" id="n2n11" type="2L75" />

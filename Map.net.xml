@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2023-02-10 21:24:59 by Eclipse SUMO netconvert Version 1.15.0
+<!-- generated on 2023-02-11 15:42:54 by Eclipse SUMO netconvert Version 1.15.0
 <configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -24,8 +24,8 @@
     <type id="2L75" priority="3" numLanes="2" speed="3.00"/>
 
     <edge id=":n10_0" function="internal">
-        <lane id=":n10_0_0" index="0" speed="3.00" length="2.58" shape="168.60,120.20 169.30,120.10 169.80,119.80 170.10,119.30 170.20,118.60"/>
-        <lane id=":n10_0_1" index="1" speed="3.00" length="7.74" shape="168.60,123.40 170.70,123.10 172.20,122.20 173.10,120.70 173.40,118.60"/>
+        <lane id=":n10_0_0" index="0" speed="2.00" length="2.58" shape="168.60,120.20 169.30,120.10 169.80,119.80 170.10,119.30 170.20,118.60"/>
+        <lane id=":n10_0_1" index="1" speed="2.00" length="7.74" shape="168.60,123.40 170.70,123.10 172.20,122.20 173.10,120.70 173.40,118.60"/>
     </edge>
     <edge id=":n11_0" function="internal">
         <lane id=":n11_0_0" index="0" speed="3.00" length="7.74" shape="45.20,25.00 45.50,22.90 46.40,21.40 47.90,20.50 50.00,20.20"/>
@@ -106,8 +106,8 @@
         <lane id=":n9_0_1" index="1" speed="2.00" length="14.40" shape="123.40,129.00 123.40,114.60"/>
     </edge>
     <edge id=":n9_2" function="internal">
-        <lane id=":n9_2_0" index="0" speed="3.00" length="11.73" shape="123.40,129.00 123.75,125.15 124.80,122.40 126.55,120.75 129.00,120.20"/>
-        <lane id=":n9_2_1" index="1" speed="3.00" length="9.03" shape="123.40,129.00 123.75,126.55 124.80,124.80 126.55,123.75 129.00,123.40"/>
+        <lane id=":n9_2_0" index="0" speed="2.00" length="11.73" shape="123.40,129.00 123.75,125.15 124.80,122.40 126.55,120.75 129.00,120.20"/>
+        <lane id=":n9_2_1" index="1" speed="2.00" length="9.03" shape="123.40,129.00 123.75,126.55 124.80,124.80 126.55,123.75 129.00,123.40"/>
     </edge>
 
     <edge id="n10n4" from="n10" to="n4" priority="3" type="2L75">
@@ -174,9 +174,9 @@
         <lane id="n8n9_0" index="0" speed="3.00" length="14.60" shape="120.20,143.60 120.20,129.00"/>
         <lane id="n8n9_1" index="1" speed="3.00" length="14.60" shape="123.40,143.60 123.40,129.00"/>
     </edge>
-    <edge id="n9n10" from="n9" to="n10" priority="3" type="2L75">
-        <lane id="n9n10_0" index="0" speed="3.00" length="39.60" shape="129.00,120.20 168.60,120.20"/>
-        <lane id="n9n10_1" index="1" speed="3.00" length="39.60" shape="129.00,123.40 168.60,123.40"/>
+    <edge id="n9n10" from="n9" to="n10" priority="1" type="2L30">
+        <lane id="n9n10_0" index="0" speed="1.00" length="39.60" shape="129.00,120.20 168.60,120.20"/>
+        <lane id="n9n10_1" index="1" speed="1.00" length="39.60" shape="129.00,123.40 168.60,123.40"/>
     </edge>
     <edge id="n9n3" from="n9" to="n3" priority="1" type="2L30">
         <lane id="n9n3_0" index="0" speed="1.00" length="35.60" shape="120.20,114.60 120.20,79.00"/>

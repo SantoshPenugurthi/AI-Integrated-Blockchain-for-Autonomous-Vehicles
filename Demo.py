@@ -1,5 +1,4 @@
 import traci
-import time
 
 traci.start(["sumo-gui","-c", "Sumo.sumocfg"])
 
@@ -52,7 +51,7 @@ while traci.simulation.getMinExpectedNumber() > 0:
                 for id in vehicle_ids:
                     speed = traci.vehicle.getSpeed(id)
                     print("speed of",id,':',speed)
-                    
+
                     if(speed==0 and next_edge=='n2n3'):
                         traci.vehicle.setRoute("veh3",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])
 

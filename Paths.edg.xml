@@ -1,9 +1,6 @@
-
-<!-- define a polygon for the closed road -->
 <edges>
     <edge from="n1" to="n2" id="n1n2" type="2L30" />
     <edge from="n2" to="n3" id="n2n3" type="2L30" />
-    <!-- define a road for the closed road -->
     <edge from="n3" to="n4" id="n3n4" type="2L30" />
     <edge from="n4" to="n5" id="n4n5" type="2L30" />
     <edge from="n5" to="n6" id="n5n6" type="2L30" />

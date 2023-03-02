@@ -13,8 +13,8 @@ while traci.simulation.getMinExpectedNumber() > 0:
     vehicle_ids = traci.vehicle.getIDList()
 
     for vehicle_id in vehicle_ids:
-        new_speed = traci.vehicle.getSpeed(vehicle_id)
-        print("speed of ",vehicle_id," is:",new_speed)
+        speed = traci.vehicle.getSpeed(vehicle_id)
+        print("speed of ",vehicle_id," is:",speed)
 
     if "veh0" in vehicle_ids:
         if(traci.vehicle.getRoadID("veh0")=="n2n3" ):

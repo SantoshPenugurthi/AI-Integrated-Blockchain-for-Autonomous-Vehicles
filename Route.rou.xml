@@ -1,5 +1,6 @@
 <routes>
     <vType accel="1.0" decel="5.0" id="Car" length="5.0" maxSpeed="5.0" sigma="0.0" />
+    <vType id="obstacle" accel="2.0" decel="5.0" maxspeed="5.0"  length="12"  sigma="0.0" />
 
     <route id="route0" edges="n1n2 n2n3 n3n4 n4n5 n5n6" />
     <vehicle depart="0" id="veh0" route="route0" type="Car" />
@@ -8,6 +9,17 @@
     <route id="route2" edges="n1n2 n2n11 n11n12 n12n13 n13n14 n14n5 n5n6" />
     <vehicle depart="0" id="veh2" route="route2" type="Car" />
 
+    <route id="route4" edges="n2n3"/>
+    <route id="route5" edges="n9n10"/>
+    <vehicle depart="0" id="o1" route="route4" type="obstacle" departPos="-1" departEdge="0"  color="1,0,0" />
+    <vehicle depart="0" id="o2" route="route5" type="obstacle" departPos="-1" departEdge="0"  color="1,0,0" />
+    <route id="route6" edges="n2n3"/>
+    <route id="route7" edges="n9n10"/>
+    <vehicle depart="0" id="o3" route="route6" type="obstacle" departPos="-1" departEdge="0"  color="1,0,0" />
+    <vehicle depart="0" id="o4" route="route7" type="obstacle" departPos="-1" departEdge="0"  color="1,0,0" />
+
     <route id="route3" edges="n1n2 n2n3 n3n4 n4n5 n5n6" />
     <vehicle depart="100" id="veh3" route="route3" type="Car" />
+
+    
 </routes>

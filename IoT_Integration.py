@@ -3,8 +3,7 @@ import traci
 traci.start(["sumo-gui","-c", "Sumo.sumocfg"])
 
 step=0
-veh0_step=0
-veh1_step=0
+obstacle_step=0
 
 while traci.simulation.getMinExpectedNumber() > 0:
     print("\nStep:", step,"---------------------------------------------------------------------------->")
@@ -16,23 +15,19 @@ while traci.simulation.getMinExpectedNumber() > 0:
         speed = traci.vehicle.getSpeed(vehicle_id)
         print("speed of ",vehicle_id," is:",speed)
 
-    if "veh0" in vehicle_ids:
-        if(traci.vehicle.getRoadID("veh0")=="n2n3" ):
-            if(veh0_step<300):
-                if(veh0_step==5):
-                    traci.vehicle.setSpeed("veh0",0)
-            else:
-                traci.vehicle.setSpeed("veh0",2)
-            veh0_step=veh0_step+1
-
-    if "veh1" in vehicle_ids:
-        if(traci.vehicle.getRoadID("veh1")=="n9n10"):
-            if(veh1_step<300):
-                if(veh1_step==5):
-                    traci.vehicle.setSpeed("veh1",0)
-            else:
-                traci.vehicle.setSpeed("veh1",2)
-            veh1_step=veh1_step+1
+    if(obstacle_step<300):
+        traci.vehicle.setSpeed("o1",0)
+        traci.vehicle.setSpeed("o2",0)
+        traci.vehicle.setSpeed("o3",0)
+        traci.vehicle.setSpeed("o4",0)
+        traci.vehicle.changeLane("o1", 1,10)
+        traci.vehicle.changeLane("o2", 1,10)
+    elif(obstacle_step==300):
+        traci.vehicle.setSpeed("o1",2)
+        traci.vehicle.setSpeed("o2",2)
+        traci.vehicle.setSpeed("o3",2)
+        traci.vehicle.setSpeed("o4",2)
+    obstacle_step=obstacle_step+1
     
 
     if "veh3" in vehicle_ids:

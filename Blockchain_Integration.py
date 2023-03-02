@@ -37,7 +37,7 @@ while traci.simulation.getMinExpectedNumber() > 0:
     # Update vehicle speed in the blockchain
     for vehicle_id in vehicle_ids:
         speed = traci.vehicle.getSpeed(vehicle_id)
-        #speed=math.ceil(speed)
+        speed=math.ceil(speed)
         tx_hash = contract.functions.updateVehicleInfo(vehicle_id, speed).transact({'from': w3.eth.accounts[0], 'gas': 1000000})
         print('Transaction hash:', tx_hash.hex())
 

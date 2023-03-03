@@ -10,6 +10,8 @@ while traci.simulation.getMinExpectedNumber() > 0:
     step=step+1
     traci.simulationStep()
     vehicle_ids = traci.vehicle.getIDList()
+    remove_obstacles = ("o1", "o2","o3","o4")
+    vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
 
     for vehicle_id in vehicle_ids:
         speed = traci.vehicle.getSpeed(vehicle_id)

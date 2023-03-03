@@ -29,6 +29,8 @@ while traci.simulation.getMinExpectedNumber() > 0:
     step=step+1
     traci.simulationStep()
     vehicle_ids = traci.vehicle.getIDList()
+    remove_obstacles = ("o1", "o2","o3","o4")
+    vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
 
     for vehicle_id in vehicle_ids:
         speed = traci.vehicle.getSpeed(vehicle_id)
@@ -65,37 +67,40 @@ while traci.simulation.getMinExpectedNumber() > 0:
     
 
     if "veh3" in vehicle_ids:
-        route = traci.vehicle.getRoute("veh3")
+        route = traci.vehicle.getRoute("veh3")#1
         print("route of veh3:",route)
 
-        current_edge_id = traci.vehicle.getRoadID("veh3")
+        current_edge_id = traci.vehicle.getRoadID("veh3")#2
         print("current edge of veh3:",current_edge_id)
 
-        route_index=traci.vehicle.getRouteIndex("veh3")
+        route_index=traci.vehicle.getRouteIndex("veh3")#3
+        print("route index:",route_index)
 
         if 0 <= route_index < len(route):
             if(current_edge_id!='n5n6'):
                 next_edge = route[route_index + 1]
                 print("next edge of veh3:", next_edge)
 
-                vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)
+                vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#4
+                remove_obstacles = ("o1", "o2","o3","o4")
+                vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
                 if(len(vehicle_ids)>0):
                     print("vehicles on edge",next_edge,":",vehicle_ids)
                     speed=0
                     number_of_vehicles=0
                     for id in vehicle_ids:
-                        speed = speed+traci.vehicle.getSpeed(id)
+                        speed =speed+contract.functions.getVehicleInfo(id).call()
                         number_of_vehicles=number_of_vehicles+1
                     print("Total speed on road",next_edge,":",speed)
                     print("Number of vehicles on road",next_edge,":",number_of_vehicles)
                     print("Average speed on road",next_edge,':',speed/number_of_vehicles)
 
                     if(speed==0 and next_edge=='n2n3'):
-                        traci.vehicle.setRoute("veh3",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])
+                        traci.vehicle.setRoute("veh3",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])#6
                         print("new route of veh3:",traci.vehicle.getRoute("veh3"))
 
                     if(speed==0 and next_edge=='n9n10'):
-                        traci.vehicle.setRoute("veh3",["n8n9","n9n3","n3n12","n12n13","n13n14","n14n5","n5n6"])
+                        traci.vehicle.setRoute("veh3",["n8n9","n9n3","n3n4","n4n5","n5n6"])#7
                         print("new route of veh3:",traci.vehicle.getRoute("veh3"))
                 else:
                     print("vehicles on edge",next_edge,":","No vehicles")

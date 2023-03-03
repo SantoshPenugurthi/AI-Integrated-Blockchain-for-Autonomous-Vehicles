@@ -1,6 +1,6 @@
 <routes>
     <vType accel="1.0" decel="5.0" id="Car" length="5.0" maxSpeed="5.0" sigma="0.0" />
-    <vType id="obstacle" accel="2.0" decel="5.0" maxspeed="5.0"  length="12"  sigma="0.0" />
+    <vType id="obstacle" accel="2.0" decel="5.0" maxspeed="5.0"  length="15"  sigma="0.0" />
 
     <route id="route0" edges="n1n2 n2n3 n3n4 n4n5 n5n6" />
     <vehicle depart="0" id="veh0" route="route0" type="Car" />

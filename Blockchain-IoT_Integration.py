@@ -52,9 +52,23 @@ while traci.simulation.getMinExpectedNumber() > 0:
 
     # Update vehicle speed in the blockchain
     for vehicle_id in vehicle_ids:
-        speed = traci.vehicle.getSpeed(vehicle_id)
+        print("\n")
+        speed = traci.vehicle.getSpeed(vehicle_id)#1
         speed=math.ceil(speed)
-        tx_hash = contract.functions.updateVehicleInfo(vehicle_id, speed).transact({'from': w3.eth.accounts[0], 'gas': 1000000})
+
+        route = traci.vehicle.getRoute(vehicle_id)#2
+        current_edge_id = traci.vehicle.getRoadID(vehicle_id)#3
+        route_index=traci.vehicle.getRouteIndex(vehicle_id)#4
+
+        if 0 <= route_index < len(route):
+            if(current_edge_id!='n5n6'):
+                next_edge = route[route_index + 1]#5
+
+        next_edge_vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#6
+        remove_obstacles = ("o1", "o2","o3","o4")
+        next_edge_vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(next_edge_vehicle_ids)))
+
+        tx_hash = contract.functions.updateVehicleInfo(vehicle_id, speed,current_edge_id,route_index,next_edge).transact({'from': w3.eth.accounts[0], 'gas': 1000000})
         print('Transaction hash:', tx_hash.hex())
 
         # Wait for the transaction to be mined
@@ -62,26 +76,45 @@ while traci.simulation.getMinExpectedNumber() > 0:
         print('Transaction mined in block', receipt.blockNumber)
 
         # Retrieve updated vehicle information from blockchain
-        speed = contract.functions.getVehicleInfo(vehicle_id).call()
+        speed = contract.functions.getVehicleSpeed(vehicle_id).call()
         print('Speed of vehicle {} is {}.'.format(vehicle_id, speed))
+
+        # route = contract.functions.getVehicleInfo(vehicle_id).call()
+        # print('route of vehicle {} is {}.'.format(vehicle_id, route))
+
+        current_edge_id = contract.functions.getVehicleCurrentEdge(vehicle_id).call()
+        print('current edge of vehicle {} is {}.'.format(vehicle_id, current_edge_id))
+
+        route_index = contract.functions.getVehicleRouteIndex(vehicle_id).call()
+        print('route index of vehicle {} is {}.'.format(vehicle_id, route_index))
+
+        next_edge = contract.functions.getVehicleNextEdge(vehicle_id).call()
+        print('next edge of vehicle {} is {}.'.format(vehicle_id, next_edge))
+
+        # next_edge_vehicle_ids = contract.functions.getVehicleInfo(vehicle_id).call()
+        # print('Speed of vehicle {} is {}.'.format(vehicle_id, next_edge_vehicle_ids))
     
 
     if "veh3" in vehicle_ids:
-        route = traci.vehicle.getRoute("veh3")#1
+        print("\n")
+        route = traci.vehicle.getRoute("veh3")#2
         print("route of veh3:",route)
 
-        current_edge_id = traci.vehicle.getRoadID("veh3")#2
+        # current_edge_id = traci.vehicle.getRoadID("veh3")#3
+        current_edge_id = contract.functions.getVehicleCurrentEdge("veh3").call()
         print("current edge of veh3:",current_edge_id)
 
-        route_index=traci.vehicle.getRouteIndex("veh3")#3
+        # route_index=traci.vehicle.getRouteIndex("veh3")#4
+        route_index = contract.functions.getVehicleRouteIndex("veh3").call()
         print("route index:",route_index)
 
         if 0 <= route_index < len(route):
             if(current_edge_id!='n5n6'):
-                next_edge = route[route_index + 1]
+                # next_edge = route[route_index + 1]#5
+                next_edge = contract.functions.getVehicleNextEdge("veh3").call()
                 print("next edge of veh3:", next_edge)
 
-                vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#4
+                vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#6
                 remove_obstacles = ("o1", "o2","o3","o4")
                 vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
                 if(len(vehicle_ids)>0):
@@ -89,18 +122,19 @@ while traci.simulation.getMinExpectedNumber() > 0:
                     speed=0
                     number_of_vehicles=0
                     for id in vehicle_ids:
-                        speed =speed+contract.functions.getVehicleInfo(id).call()
+                        # speed = speed+traci.vehicle.getSpeed(id)#1
+                        speed =speed+contract.functions.getVehicleSpeed(id).call()
                         number_of_vehicles=number_of_vehicles+1
                     print("Total speed on road",next_edge,":",speed)
                     print("Number of vehicles on road",next_edge,":",number_of_vehicles)
                     print("Average speed on road",next_edge,':',speed/number_of_vehicles)
 
                     if(speed==0 and next_edge=='n2n3'):
-                        traci.vehicle.setRoute("veh3",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])#6
+                        traci.vehicle.setRoute("veh3",["n1n2","n2n7","n7n8","n8n9", "n9n10", "n10n4", "n4n5", "n5n6"])
                         print("new route of veh3:",traci.vehicle.getRoute("veh3"))
 
                     if(speed==0 and next_edge=='n9n10'):
-                        traci.vehicle.setRoute("veh3",["n8n9","n9n3","n3n4","n4n5","n5n6"])#7
+                        traci.vehicle.setRoute("veh3",["n8n9","n9n3","n3n4","n4n5","n5n6"])
                         print("new route of veh3:",traci.vehicle.getRoute("veh3"))
                 else:
                     print("vehicles on edge",next_edge,":","No vehicles")

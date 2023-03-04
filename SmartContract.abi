@@ -7,7 +7,64 @@
 				"type": "string"
 			}
 		],
-		"name": "getVehicleInfo",
+		"name": "getVehicleCurrentEdge",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			}
+		],
+		"name": "getVehicleNextEdge",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			}
+		],
+		"name": "getVehicleRouteIndex",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			}
+		],
+		"name": "getVehicleSpeed",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -29,6 +86,21 @@
 				"internalType": "uint256",
 				"name": "speed",
 				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "current_edge_id",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "route_index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "next_edge",
+				"type": "string"
 			}
 		],
 		"name": "updateVehicleInfo",

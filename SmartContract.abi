@@ -45,6 +45,44 @@
 				"type": "string"
 			}
 		],
+		"name": "getVehicleNextEdgeVehicles",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			}
+		],
+		"name": "getVehicleRoute",
+		"outputs": [
+			{
+				"internalType": "string[]",
+				"name": "",
+				"type": "string[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "id",
+				"type": "string"
+			}
+		],
 		"name": "getVehicleRouteIndex",
 		"outputs": [
 			{
@@ -88,6 +126,11 @@
 				"type": "uint256"
 			},
 			{
+				"internalType": "string[]",
+				"name": "route",
+				"type": "string[]"
+			},
+			{
 				"internalType": "string",
 				"name": "current_edge_id",
 				"type": "string"
@@ -101,6 +144,11 @@
 				"internalType": "string",
 				"name": "next_edge",
 				"type": "string"
+			},
+			{
+				"internalType": "string[]",
+				"name": "next_edge_vehicles",
+				"type": "string[]"
 			}
 		],
 		"name": "updateVehicleInfo",

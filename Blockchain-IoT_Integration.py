@@ -57,6 +57,8 @@ while traci.simulation.getMinExpectedNumber() > 0:
         speed=math.ceil(speed)
 
         route = traci.vehicle.getRoute(vehicle_id)#2
+        route_arr = list(map(str, route))
+
         current_edge_id = traci.vehicle.getRoadID(vehicle_id)#3
         route_index=traci.vehicle.getRouteIndex(vehicle_id)#4
 
@@ -64,11 +66,12 @@ while traci.simulation.getMinExpectedNumber() > 0:
             if(current_edge_id!='n5n6'):
                 next_edge = route[route_index + 1]#5
 
-        next_edge_vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#6
+        next_edge_vehicles = traci.edge.getLastStepVehicleIDs(next_edge)#6
         remove_obstacles = ("o1", "o2","o3","o4")
-        next_edge_vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(next_edge_vehicle_ids)))
+        next_edge_vehicles = tuple(filter(lambda x: x not in remove_obstacles, list(next_edge_vehicles)))
+        next_edge_vehicles_arr=list(map(str,next_edge_vehicles))
 
-        tx_hash = contract.functions.updateVehicleInfo(vehicle_id, speed,current_edge_id,route_index,next_edge).transact({'from': w3.eth.accounts[0], 'gas': 1000000})
+        tx_hash = contract.functions.updateVehicleInfo(vehicle_id, speed,route_arr,current_edge_id,route_index,next_edge,next_edge_vehicles_arr).transact({'from': w3.eth.accounts[0], 'gas': 1000000})
         print('Transaction hash:', tx_hash.hex())
 
         # Wait for the transaction to be mined
@@ -77,27 +80,31 @@ while traci.simulation.getMinExpectedNumber() > 0:
 
         # Retrieve updated vehicle information from blockchain
         speed = contract.functions.getVehicleSpeed(vehicle_id).call()
-        print('Speed of vehicle {} is {}.'.format(vehicle_id, speed))
+        print('Speed of vehicle {} : {}'.format(vehicle_id, speed))
 
-        # route = contract.functions.getVehicleInfo(vehicle_id).call()
-        # print('route of vehicle {} is {}.'.format(vehicle_id, route))
+        route = contract.functions.getVehicleRoute(vehicle_id).call()
+        route=tuple(route)
+        print('route of vehicle {} : {}'.format(vehicle_id, route))
 
         current_edge_id = contract.functions.getVehicleCurrentEdge(vehicle_id).call()
-        print('current edge of vehicle {} is {}.'.format(vehicle_id, current_edge_id))
+        print('current edge of vehicle {} : {}'.format(vehicle_id, current_edge_id))
 
         route_index = contract.functions.getVehicleRouteIndex(vehicle_id).call()
-        print('route index of vehicle {} is {}.'.format(vehicle_id, route_index))
+        print('route index of vehicle {} : {}'.format(vehicle_id, route_index))
 
         next_edge = contract.functions.getVehicleNextEdge(vehicle_id).call()
-        print('next edge of vehicle {} is {}.'.format(vehicle_id, next_edge))
+        print('next edge of vehicle {} : {}'.format(vehicle_id, next_edge))
 
-        # next_edge_vehicle_ids = contract.functions.getVehicleInfo(vehicle_id).call()
-        # print('Speed of vehicle {} is {}.'.format(vehicle_id, next_edge_vehicle_ids))
+        next_edge_vehicles = contract.functions.getVehicleNextEdgeVehicles(vehicle_id).call()
+        next_edge_vehicles=tuple(next_edge_vehicles)
+        print('vehicles of next edge of {} : {}'.format(vehicle_id, next_edge_vehicles))
     
 
     if "veh3" in vehicle_ids:
         print("\n")
-        route = traci.vehicle.getRoute("veh3")#2
+        # route = traci.vehicle.getRoute("veh3")#2
+        route=contract.functions.getVehicleRoute(vehicle_id).call()
+        route=tuple(route)
         print("route of veh3:",route)
 
         # current_edge_id = traci.vehicle.getRoadID("veh3")#3
@@ -114,9 +121,12 @@ while traci.simulation.getMinExpectedNumber() > 0:
                 next_edge = contract.functions.getVehicleNextEdge("veh3").call()
                 print("next edge of veh3:", next_edge)
 
-                vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#6
-                remove_obstacles = ("o1", "o2","o3","o4")
-                vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
+                # vehicle_ids = traci.edge.getLastStepVehicleIDs(next_edge)#6
+                # remove_obstacles = ("o1", "o2","o3","o4")
+                # vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
+                vehicle_ids = contract.functions.getVehicleNextEdgeVehicles("veh3").call()
+                vehicle_ids= tuple(vehicle_ids)
+
                 if(len(vehicle_ids)>0):
                     print("vehicles on edge",next_edge,":",vehicle_ids)
                     speed=0

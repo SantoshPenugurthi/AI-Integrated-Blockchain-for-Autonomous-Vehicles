@@ -6,16 +6,16 @@ step=0
 obstacle_step=0
 
 while traci.simulation.getMinExpectedNumber() > 0:
-    print("\nStep:", step,"---------------------------------------------------------------------------->")
+    print("\nTime:", step,"s ---------------------------------------------------------------------------->")
     step=step+1
     traci.simulationStep()
     vehicle_ids = traci.vehicle.getIDList()
     remove_obstacles = ("o1", "o2","o3","o4")
     vehicle_ids = tuple(filter(lambda x: x not in remove_obstacles, list(vehicle_ids)))
 
-    for vehicle_id in vehicle_ids:
-        speed = traci.vehicle.getSpeed(vehicle_id)
-        print("speed of ",vehicle_id," is:",speed)
+    # for vehicle_id in vehicle_ids:
+    #     speed = traci.vehicle.getSpeed(vehicle_id)
+    #     print("speed of ",vehicle_id," is:",speed)
 
     if(obstacle_step<300):
         traci.vehicle.setSpeed("o1",0)

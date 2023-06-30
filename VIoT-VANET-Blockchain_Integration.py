@@ -25,7 +25,7 @@ step=0
 obstacle_step=0
 
 while traci.simulation.getMinExpectedNumber() > 0:
-    print("\nStep:", step,"---------------------------------------------------------------------------->")
+    print("\nTime:", step,"s ---------------------------------------------------------------------------->")
     step=step+1
     traci.simulationStep()
     vehicle_ids = traci.vehicle.getIDList()
